@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Switch, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { Switch, Text, View } from "react-native";
 
 // components
-import Gyro from '../components/Gyro';
+import Gyro from "../components/Gyro";
 
 // TODO functionality so the keyboard never covers the input.
 
@@ -12,43 +12,44 @@ class SaveBattery extends Component {
     // console.log('hello');
 
     this.state = {
-      saveBattery: false,
+      saveBattery: false
     };
 
     this.onSwitch = this.onSwitch.bind(this);
     this.onGyroUpdate = this.onGyroUpdate.bind(this);
   }
 
-  onSwitch(){
+  onSwitch() {
     // console.log('SaveBattery :: onSwitch()');
-    this.setState({
-      saveBattery: !this.state.saveBattery
-    }, () => {
-      if (this.state.saveBattery) {
-        // console.log('on');
-      } else {
-        // console.log('off');
+    this.setState(
+      {
+        saveBattery: !this.state.saveBattery
+      },
+      () => {
+        if (this.state.saveBattery) {
+          // console.log('on');
+        } else {
+          // console.log('off');
+        }
       }
-    });
+    );
   }
 
-  onGyroUpdate(x){
-    console.log('SaveBattery :: onGyroUpdate()');
+  onGyroUpdate(x) {
+    console.log("SaveBattery :: onGyroUpdate()");
     console.log(x);
-    console.log('--------------');
+    console.log("--------------");
   }
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginTop: 80 }}>
         <Switch
+          style={{ alignSelf: "center" }}
           onValueChange={this.onSwitch}
           value={this.state.saveBattery}
         />
-        <Gyro
-          active={this.state.saveBattery}
-          onUpdate={this.onGyroUpdate}
-        />
+        <Gyro active={this.state.saveBattery} onUpdate={this.onGyroUpdate} />
       </View>
     );
   }
